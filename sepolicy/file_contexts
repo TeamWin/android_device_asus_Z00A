@@ -1,0 +1,127 @@
+# Asus config scripts / files
+/system/bin/bcu_cpufreqrel              u:object_r:asus_config_exec:s0
+/system/bin/init\.class_main\.sh          u:object_r:asus_config_exec:s0
+/system/bin/config_init\.sh              u:object_r:asus_config_exec:s0
+/system/bin/customize_service           u:object_r:asus_config_exec:s0
+/system/bin/fg_conf                     u:object_r:asus_config_exec:s0
+/system/bin/init_config\.sh              u:object_r:asus_config_exec:s0
+/system/bin/intel_prop                  u:object_r:asus_config_exec:s0
+/system/bin/logcontrol                  u:object_r:asus_config_exec:s0
+/system/bin/sl_si_service               u:object_r:asus_config_exec:s0
+/config(/.*)?                           u:object_r:asus_config_file:s0
+/local_cfg                              u:object_r:asus_config_file:s0
+
+# Asus logging that we are going to throttle
+/data/sensorhubd\.log                    u:object_r:log_file_we_dont_want_to_allow:s0
+
+# A/V
+/dev/v4l-subdev[0-9]*                   u:object_r:camera_device:s0
+/dev/media0                             u:object_r:camera_device:s0
+/dev/switch_ctrl                        u:object_r:audio_device:s0
+/mnt/asec/media(/.*)?                   u:object_r:media_rw_data_file:s0
+
+# We don't relabel /factory/ so these would be useless:
+# /factory/ov5670[^/]*\.txt             u:object_r:media_efs_file:s0
+# /factory/t4k37[^/]*\.txt              u:object_r:media_efs_file:s0
+
+# Block devices
+/dev/block/mmcblk0p14                   u:object_r:config_block_device:s0
+/dev/block/by-name/boot                 u:object_r:boot_block_device:s0
+/dev/block/by-name/cache                u:object_r:cache_block_device:s0
+/dev/block/by-name/config               u:object_r:config_block_device:s0
+/dev/block/by-name/recovery             u:object_r:recovery_block_device:s0
+/dev/block/by-name/system               u:object_r:system_block_device:s0
+/dev/block/by-name/userdata             u:object_r:userdata_block_device:s0
+/dev/block/pci/pci0000:00/0000:00:01\.0/by-name/boot           u:object_r:boot_block_device:s0
+/dev/block/pci/pci0000:00/0000:00:01\.0/by-name/cache          u:object_r:cache_block_device:s0
+/dev/block/pci/pci0000:00/0000:00:01\.0/by-name/config         u:object_r:config_block_device:s0
+/dev/block/pci/pci0000:00/0000:00:01\.0/by-name/recovery       u:object_r:recovery_block_device:s0
+/dev/block/pci/pci0000:00/0000:00:01\.0/by-name/system         u:object_r:system_block_device:s0
+/dev/block/pci/pci0000:00/0000:00:01\.0/by-name/userdata       u:object_r:userdata_block_device:s0
+/dev/block/zram0                                               u:object_r:swap_block_device:s0
+
+# Needed to potentially fsck them
+/dev/block/mmcblk0p15                   u:object_r:cache_block_device:s0
+/dev/block/mmcblk0p19                   u:object_r:userdata_block_device:s0
+
+# Bluetooth
+/config/bt(/.*)?                        u:object_r:bluetooth_efs_file:s0
+/dev/ttyMFD0				u:object_r:bluetooth_device:s0
+/system/bin/bd_prov		        u:object_r:bluetooth_exec:s0
+
+/sys/devices/platform/bcm_bt_lpm\.0/rfkill/rfkill[0-9]/state     u:object_r:sysfs_bluetooth_writable:s0
+/sys/devices/platform/bcm_bt_lpm\.0/rfkill/rfkill[0-9]/type      u:object_r:sysfs_bluetooth_writable:s0
+
+# We don't relabel /factory/ so these would be useless:
+#/factory/bt(/.*)?	                u:object_r:bluetooth_efs_file:s0
+
+# Display
+/dev/dri/card0				u:object_r:gpu_device:s0
+/dev/card0				u:object_r:gpu_device:s0
+/dev/it8566_hdmi_cec                    u:object_r:video_device:s0
+/dev/pvr_sync				u:object_r:gpu_device:s0
+/dev/sw_sync                            u:object_r:graphics_device:s0
+/sys/devices/pci0000:00/0000:00:09\.2/i2c-7/7-0038/ftsgesturemode u:object_r:sysfs_touchscreen:s0
+/system/vendor/bin/pvrsrvctl            u:object_r:pvrsrvctl_exec:s0
+
+# DRM
+/dev/dx_sep_q0				u:object_r:asus_tee_device:s0
+
+# Factory
+/factory(/.*)?                  	u:object_r:factory_file:s0
+
+# GPS
+/dev/ttyMFD2                            u:object_r:gps_device:s0
+/system/bin/gpscerd                     u:object_r:gpsd_exec:s0
+/system/bin/gpsd                        u:object_r:gpsd_exec:s0
+
+# NFC
+/dev/bcm2079x-i2c                       u:object_r:nfc_device:s0
+/data/nfc(/.*)?                         u:object_r:nfc_data_file:s0
+
+# radio
+/config/telephony(/.*)?                 u:object_r:radio_data_file:s0
+/data/logs(/.*)?                        u:object_r:radio_log_file:s0
+/dev/bus/usb/001/00[12]                 u:object_r:radio_device:s0
+/dev/gsmtty[0-9]*                       u:object_r:radio_device:s0
+/dev/mdm_ctrl[01]                       u:object_r:radio_device:s0
+/dev/socket/mmgr2                       u:object_r:rild_socket:s0
+/dev/socket/mmgr                        u:object_r:rild_socket:s0
+/dev/socket/nvm-ctl2                    u:object_r:rild_socket:s0
+/dev/socket/nvm-ctl                     u:object_r:rild_socket:s0
+/dev/socket/rild2                       u:object_r:rild_socket:s0
+/dev/socket/rild-debug2                 u:object_r:rild_debug_socket:s0
+/dev/ttyACM[01]                         u:object_r:radio_device:s0
+/dev/ttyMFD1				u:object_r:radio_device:s0
+/dev/ttyXMM[01]                         u:object_r:radio_device:s0
+/sys/devices/pci0000:00/0000:00:04\.2/power/control u:object_r:radio_sysfs_file:s0
+/sys/devices/pci0000:00/0000:00:10\.0/hsic_enable u:object_r:radio_sysfs_file:s0
+/sys/devices/pci0000:00/0000:00:10\.0/hsic/hsic0/L2_autosuspend_enable u:object_r:radio_sysfs_file:s0
+/sys/devices/pci0000:00/0000:00:10\.0/L2_autosuspend_enable u:object_r:radio_sysfs_file:s0
+/sys/kernel/modem_nvram/dump            u:object_r:radio_sysfs_file:s0
+/system/bin/mmgr                        u:object_r:rild_exec:s0
+/system/bin/nvm_server                  u:object_r:rild_exec:s0
+
+# WTF is the ril doing here with these firmware file in /cache??
+/cache/telephony(/.*)?                  u:object_r:radio_cache_file:s0
+
+# sensorhubd
+/data/pids                              u:object_r:sensorhubd_debug_file:s0
+/dev/i2c(.*)?                           u:object_r:i2c_device:s0
+/dev/socket/sensorhubd                  u:object_r:sensorhubd_socket:s0
+/sys/devices/pci0000:00/0000:00:16\.1/control u:object_r:sensor_sysfs_file:s0
+/system/bin/sensorhubd                  u:object_r:sensorhubd_exec:s0
+
+# silentlake
+/dev/socket/silentlake                  u:object_r:silentlake_socket:s0
+
+# thermal
+/sys/devices/platform/coretemp\.0/temp[2-5]_threshold[1-2]    u:object_r:sysfs_coretemp:s0
+/sys/devices/virtual/powercap/intel-rapl/intel-rapl:0/constraint_0_power_limit_uw u:object_r:sysfs_thermal_writable:s0
+/sys/devices/virtual/thermal/cooling_device[0-2]/cur_state      u:object_r:sysfs_thermal_writable:s0
+/sys/devices/virtual/thermal/thermal_zone[6-7]/emul_temp      u:object_r:sysfs_thermal_writable:s0
+/sys/module/intel_mid_osip/parameters/force_shutdown_occured    u:object_r:sysfs_thermal_writable:s0
+/system/bin/thermald                    u:object_r:thermald_exec:s0
+
+# wifi
+/config/wifi(/.*)?                      u:object_r:wifi_config_file:s0

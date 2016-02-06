@@ -1,0 +1,20 @@
+#============= sensorhubd ==============
+type sensorhubd, domain;
+type sensorhubd_exec, exec_type, file_type;
+init_daemon_domain(sensorhubd)
+
+allow sensorhubd efs_file:dir search;
+allow sensorhubd efs_file:file r_file_perms;
+allow sensorhubd factory_file:dir search;
+allow sensorhubd factory_file:file r_file_perms;
+allow sensorhubd sensor_sysfs_file:file rw_file_perms;
+
+# Note: sensorhubd tries to exec a script to update the firmware, we
+#    specifically do not allow that since we don't ship the script
+#    anyway.
+# Note: sensorhubd executes pidof sensorhubd | wc -w > /data/pids
+#    (wtf??) and we also specifically let that be disallowed.
+# You can ignore:
+# allow sensorhubd shell_exec:file { read execute open execute_no_trans };
+allow sensorhubd system_data_file:dir create_file_perms;
+allow sensorhubd sensorhubd_debug_file:file rw_file_perms;

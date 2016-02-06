@@ -1,0 +1,1 @@
+allow untrusted_app asus_tee_device:chr_file rw_file_perms;

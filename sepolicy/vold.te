@@ -1,0 +1,3 @@
+allow vold asus_config_file:dir { r_dir_perms setattr };
+allow vold factory_file:dir { rw_dir_perms setattr };
+allow vold factory_file:file { rw_file_perms setattr };

@@ -1,0 +1,5 @@
+allow system_app sysfs_thermal_writable:file rw_file_perms;
+allow system_app sysfs_coretemp:file rw_file_perms;
+allow system_app sysfs_touchscreen:file rw_file_perms;
+# TODO This looks dubious
+allow system_app self:netlink_kobject_uevent_socket {create read bind connect getopt setopt shutdown};

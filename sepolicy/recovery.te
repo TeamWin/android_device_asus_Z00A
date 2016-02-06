@@ -1,0 +1,2 @@
+allow recovery self:capability sys_boot;
+allow recovery gpu_device:chr_file { rw_file_perms setattr };

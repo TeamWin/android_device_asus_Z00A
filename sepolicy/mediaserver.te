@@ -1,0 +1,27 @@
+allow mediaserver asus_tee_device:chr_file rw_file_perms;
+allow mediaserver graphics_device:dir search;
+allow mediaserver factory_file:dir search;
+allow mediaserver factory_file:file r_file_perms;
+allow mediaserver media_rw_data_file:dir rw_dir_perms;
+allow mediaserver media_rw_data_file:file { create_file_perms rw_file_perms };
+allow mediaserver radio_device:chr_file rw_file_perms;
+allow mediaserver sensorservice_service:service_manager find;
+
+# This is evil but we cannot constrain it anymore than
+# "any system_file" because the domain rules in external/sepolicy.
+allow mediaserver system_file:file execmod;
+
+# This is less evil, but really sucks.  I don't want to screw up the
+# /factory/ partition for people who return to stock and therefore don't
+# want to relabel these files correctly to limit what mediaserver can
+# access (it needs camera calibration files)
+allow mediaserver efs_file:dir search;
+allow mediaserver efs_file:file r_file_perms;
+
+set_prop(mediaserver, camera_prop)
+
+# Use sockets received over binder from various services.
+allow mediaserver system_server:unix_stream_socket rw_socket_perms;
+
+unix_socket_connect(mediaserver, rild, rild)
+wakelock_use(mediaserver)

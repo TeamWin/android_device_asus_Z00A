@@ -1,0 +1,47 @@
+# Let's limit what all the blobs can do in /data
+type log_file_we_dont_want_to_allow, file_type, data_file_type;
+
+# Asusconfig
+type asus_config_file, file_type;
+
+# Bluetooth
+type bluetooth_config_file, file_type, data_file_type;
+type bluetooth_device, dev_type;
+
+# Display
+type sysfs_touchscreen, fs_type, sysfs_type;
+
+# Factory
+type factory_file, file_type, data_file_type;
+
+# Media
+type media_efs_file, file_type;
+
+# Radio
+type radio_cache_file, file_type, data_file_type;
+type radio_log_file, file_type, data_file_type;
+type radio_sysfs_file, fs_type, sysfs_type;
+
+# Sensorhubd
+type sensorhubd_debug_file, file_type;
+type sensorhubd_efs_file, file_type;
+type sensorhubd_socket, file_type;
+type i2c_device, dev_type;
+type sensor_sysfs_file, fs_type, sysfs_type;
+
+# Silentlake service
+type silentlake_socket, file_type;
+
+# Tee device
+# We need to violate a neverallow for tee_device so redefine it as our
+# own device and take care of it ourselves.  Since Google made this
+# device 0666 on fugu and it appears to have its own access control mechanism,
+# we will grant rights which might otherwise be scary to userspace domains.
+type asus_tee_device, dev_type;
+
+# Thermal
+type sysfs_coretemp, fs_type, sysfs_type;
+type sysfs_thermal_writable, fs_type, sysfs_type;
+
+# WiFi
+type wifi_config_file, file_type, data_file_type;

@@ -1,0 +1,21 @@
+#============= init ==============
+allow init port:tcp_socket name_connect;
+allow init self:tcp_socket { write getopt create read connect };
+
+# Mount on and write to /proc/sys/fs/binfmt_misc.
+allow init proc:dir mounton;
+allow init binfmt_miscfs:file w_file_perms;
+
+# /local_cfg
+allow init tmpfs:lnk_file create_file_perms;
+allow init rootfs:lnk_file setattr;
+
+# /cache/telephony/[12]
+allow init radio_cache_file:file rw_file_perms;
+allow init radio_cache_file:dir { rw_dir_perms relabelto };
+
+# /system/etc/security/sep_policy.conf is loaded
+allow init sepfs:file w_file_perms;
+
+# Allow shimlibs
+allow init { domain -lmkd }:process noatsecure;

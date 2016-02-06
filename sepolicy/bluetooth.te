@@ -1,0 +1,7 @@
+type bluetooth_exec, exec_type, file_type;
+domain_auto_trans(init, bluetooth_exec, bluetooth)
+
+allow bluetooth asus_config_file:dir search;
+allow bluetooth asus_tee_device:chr_file rw_file_perms;
+allow bluetooth bluetooth_device:chr_file rw_file_perms;
+allow bluetooth sysfs_bluetooth_writable:file w_file_perms;

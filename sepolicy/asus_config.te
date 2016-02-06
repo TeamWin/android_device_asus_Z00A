@@ -1,0 +1,45 @@
+type asus_config, domain;
+type asus_config_exec, exec_type, file_type;
+
+init_daemon_domain(asus_config)
+
+set_prop(asus_config, audio_prop)
+set_prop(asus_config, asus_prop)
+set_prop(asus_config, config_prop)
+set_prop(asus_config, radio_prop)
+
+allow asus_config asus_config_file:dir search;
+allow asus_config asus_config_file:file rw_file_perms;
+allow asus_config bluetooth_efs_file:dir r_dir_perms;
+allow asus_config bluetooth_efs_file:file { rw_file_perms setattr };
+allow asus_config device:dir write;
+allow asus_config efs_file:dir { r_dir_perms setattr };
+allow asus_config efs_file:file { r_file_perms setattr };
+allow asus_config factory_file:dir { r_dir_perms setattr };
+allow asus_config factory_file:file { r_file_perms setattr };
+allow asus_config rootfs:dir mounton;
+allow asus_config wifi_config_file:dir r_dir_perms;
+allow asus_config wifi_config_file:file { rw_file_perms setattr };
+
+# allow it to mount /local_cfg
+allow asus_config self:capability sys_admin;
+
+# Customize does all sorts of config by running system() and until we
+# either reverse it or asus makes it saner, we can't do much about this:
+allow asus_config shell_exec:file { read execute open execute_no_trans };
+allow asus_config self:capability { fowner fsetid chown dac_override };
+
+# --------------------------
+# Some denials that we allow
+# --------------------------
+
+# why is "customize" ueventd using __kmsg__ when it should just create
+# and use /dev/kmsg instead?
+# Looks like we have to kill their logging because mknod isn't allowed
+# in anything except a few very restricted contexts.
+#allow asus_config self:capability { mknod dac_override };
+#type_transition asus_config device:chr_file klog_device "__kmsg__";
+#allow asus_config klog_device:chr_file { create open write unlink };
+
+# writes to /sys/class/android_usb/android0/iSerial which we don't need
+# and therefore have a failure to write sysfs:fs

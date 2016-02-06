@@ -1,0 +1,10 @@
+[
+  {
+    "repository": "android_kernel_asus_moorefield",
+    "target_path": "kernel/asus/moorefield"
+  },
+  {
+    "repository": "android_external_stlport",
+    "target_path": "external/stlport"
+  }
+]
