@@ -48,6 +48,7 @@ BOARD_HEALTHD_CUSTOM_CHARGER_RES := device/asus/zenfone2/charger/images
 BOARD_EGL_CFG := device/asus/mofd-common/configs/egl.cfg
 
 # Init
+TARGET_UNIFIED_DEVICE := true
 TARGET_INIT_VENDOR_LIB := libinit_mofd
 TARGET_LIBINIT_DEFINES_FILE := device/asus/zenfone2/init/init_mofd.cpp
 

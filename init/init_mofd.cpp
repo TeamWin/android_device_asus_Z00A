@@ -39,6 +39,15 @@
 #define MEMINFO_KEY "MemTotal:"
 #define ZRAM_MEM_THRESHOLD 3000000
 
+/* ProjectID */
+#define PRODUCT_PROP "ro.build.product"
+#define MODEL_PROP "ro.product.model"
+#define DEVICE_PROP "ro.product.device"
+#define DESCRIPTION_PROP "ro.build.description"
+#define FINGERPRINT_PROP "ro.build.fingerprint"
+#define PRODUCT_ID_FILE "/sys/module/intel_mid_sfi/parameters/project_id"
+#define ID_LENGTH 2
+
 static int read_file2(const char *fname, char *data, int max_size)
 {
     int fd, rc;
@@ -105,9 +114,39 @@ static void configure_zram() {
     fclose(f);
 }
 
+static void get_projectID() {
+    int ret = 0;
+    char const *path = PRODUCT_ID_FILE;
+    char buf[ID_LENGTH + 1];
+    prop_info *pi;
+
+    if(read_file2(path, buf, sizeof(buf))) {
+        if (strstr(buf, "23")) {
+            property_set("ro.product.model", "ASUS_Z008");
+            property_set("ro.build.fingerprint", "asus/WW_Z008/Z008:5.0/LRX21V/2.20.40.138_20160107_6192_user:user/release-keys");
+            property_set("ro.build.description", "asusmofd_hd-user 5.0 LRX21V 2.20.40.138_20160107_6192_user release-keys");
+            property_set("ro.product.device", "Z008");
+            property_set("ro.build.product", "Z008");
+        } else if (strstr(buf, "27") || strstr(buf, "28") || strstr(buf, "30") || strstr(buf, "31")){
+            property_set("ro.product.model", "ASUS_Z00A");
+            property_set("ro.build.fingerprint", "asus/WW_Z00A/Z00A:5.0/LRX21V/2.20.40.165_20160118_6541_user:user/release-keys");
+            property_set("ro.build.description", "asusmofd_fhd-user 5.0 LRX21V 2.20.40.165_20160118_6541_user release-keys");
+            property_set("ro.product.device", "Z00A");
+            property_set("ro.build.product", "Z00A");
+        } else {
+            property_set("ro.product.model", "UNKNOWN");
+            property_set("ro.build.fingerprint", "UNKNOWN");
+            property_set("ro.build.description", "UNKNOWN");
+            property_set("ro.product.device", "UNKNOWN");
+            property_set("ro.build.product", "UNKNOWN");
+            ERROR("Unkown product_ID %s found \n", buf);
+        }
+    }
+}
 
 void vendor_load_properties()
 {
     get_serial();
     configure_zram();
+    get_projectID();
 }
