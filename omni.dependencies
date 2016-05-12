@@ -8,11 +8,5 @@
   {
     "repository": "android_external_stlport",
     "target_path": "external/stlport"
-  },
-  {
-    "remote": "github",
-    "repository": "Dees-Troy/android_external_libenc",
-    "target_path": "external/libenc",
-    "revision": "android-5.1"
   }
 ]
