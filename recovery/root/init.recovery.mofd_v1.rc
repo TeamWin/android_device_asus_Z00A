@@ -18,6 +18,7 @@ on init
 on boot
     setprop sys.usb.config adb
     trigger firmware_mounts_complete
+    start intel_prop
 
 on firmware_mounts_complete
     rm /dev/.booting
