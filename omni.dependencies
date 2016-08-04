@@ -1,12 +1,8 @@
 [
   {
     "remote": "github",
-    "repository": "CyanogenMod/android_kernel_asus_moorefield",
+    "repository": "jrior001/android_kernel_asus_moorefield",
     "target_path": "kernel/asus/moorefield",
-    "revision": "cm-13.0"
-  },
-  {
-    "repository": "android_external_stlport",
-    "target_path": "external/stlport"
+    "revision": "M-rebase"
   }
 ]
