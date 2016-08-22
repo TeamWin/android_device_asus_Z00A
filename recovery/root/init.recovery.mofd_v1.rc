@@ -34,7 +34,7 @@ on property:sys.usb.config=adb
 
 service intel_prop /sbin/intel_prop
     oneshot
-    seclabel u:r:asus_config_exec:s0
+    #seclabel u:r:asus_config_exec:s0
 
 # copied from common/init.watchdogd.rc
 service watchdogd /sbin/watchdogd 60 20
