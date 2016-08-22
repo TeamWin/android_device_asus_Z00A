@@ -1,8 +1,0 @@
-[
-  {
-    "remote": "github",
-    "repository": "jrior001/android_kernel_asus_moorefield",
-    "target_path": "kernel/asus/moorefield",
-    "revision": "M-rebase"
-  }
-]

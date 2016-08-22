@@ -35,7 +35,3 @@ ADDITIONAL_DEFAULT_PROPERTIES += ro.sys.powerctl.no.shutdown=1
 PRODUCT_PACKAGES += \
     intel_prop.cfg \
     ueventd.mofd_v1.rc
-
-# stlport required for our LP blobs
-PRODUCT_PACKAGES += \
-    libstlport

@@ -35,14 +35,14 @@ BOARD_FUNCTIONFS_HAS_SS_COUNT := true
 TARGET_USES_64_BIT_BINDER := true
 
 # Bootloader
-TARGET_OTA_ASSERT_DEVICE := Z00A,Z008
+TARGET_OTA_ASSERT_DEVICE := Z00A
 # bootstub as 2nd bootloader
 TARGET_BOOTLOADER_IS_2ND := true
 
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_CHARGER_SHOW_PERCENTAGE := true
-BOARD_HEALTHD_CUSTOM_CHARGER_RES := device/asus/zenfone2/charger/images
+BOARD_HEALTHD_CUSTOM_CHARGER_RES := device/asus/Z00A/charger/images
 
 # EGL
 BOARD_EGL_CFG := device/asus/mofd-common/configs/egl.cfg
@@ -50,7 +50,7 @@ BOARD_EGL_CFG := device/asus/mofd-common/configs/egl.cfg
 # Init
 TARGET_UNIFIED_DEVICE := true
 TARGET_INIT_VENDOR_LIB := libinit_mofd
-TARGET_LIBINIT_DEFINES_FILE := device/asus/zenfone2/init/init_mofd.cpp
+TARGET_LIBINIT_DEFINES_FILE := device/asus/Z00A/init/init_mofd.cpp
 
 # Inline kernel building
 TARGET_KERNEL_SOURCE := kernel/asus/moorefield
@@ -66,9 +66,9 @@ BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 TARGET_PROVIDES_LIBLIGHT := true
 
 # Mkbootimg
-BOARD_CUSTOM_BOOTIMG_MK := device/asus/zenfone2/mkbootimg.mk
-BOARD_BOOT_KEY := device/asus/zenfone2/keys/boot_z00a.sig
-BOARD_RECOVERY_KEY := device/asus/zenfone2/keys/recovery_z00a.sig
+BOARD_CUSTOM_BOOTIMG_MK := device/asus/Z00A/mkbootimg.mk
+BOARD_BOOT_KEY := device/asus/Z00A/keys/boot_z00a.sig
+BOARD_RECOVERY_KEY := device/asus/Z00A/keys/recovery_z00a.sig
 
 # Partitions
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
@@ -86,12 +86,12 @@ TARGET_POWERHAL_VARIANT := mofd_v1
 BOARD_CANT_BUILD_RECOVERY_FROM_BOOT_PATCH := true
 TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
 COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
-TARGET_RECOVERY_FSTAB := device/asus/zenfone2/recovery/root/etc/twrp.fstab
+TARGET_RECOVERY_FSTAB := device/asus/Z00A/recovery/root/etc/twrp.fstab
 TARGET_RECOVERY_DEVICE_MODULES := libinit_mofd librecovery_updater_mofd
 
 
 # SELinux
-#BOARD_SEPOLICY_DIRS += device/asus/zenfone2/sepolicy
+#BOARD_SEPOLICY_DIRS += device/asus/Z00A/sepolicy
 
 # TWRP
 TW_THEME := portrait_hdpi

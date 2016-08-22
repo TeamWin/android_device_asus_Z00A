@@ -123,14 +123,14 @@ static void get_projectID() {
     if(read_file2(path, buf, sizeof(buf))) {
         if (strstr(buf, "23")) {
             property_set("ro.product.model", "ASUS_Z008");
-            property_set("ro.build.fingerprint", "asus/WW_Z008/Z008:5.0/LRX21V/2.20.40.138_20160107_6192_user:user/release-keys");
-            property_set("ro.build.description", "asusmofd_hd-user 5.0 LRX21V 2.20.40.138_20160107_6192_user release-keys");
+            property_set("ro.build.fingerprint", "asus/WW_Z008/Z008:6.0.1/MMB29P/4.21.40.54_20160603_3940_user:user/release-keys");
+            property_set("ro.build.description", "asusmofd_hd-user 6.0.1 MMB29P 4.21.40.54_20160603_3940_user release-keys");
             property_set("ro.product.device", "Z008");
             property_set("ro.build.product", "Z008");
         } else if (strstr(buf, "27") || strstr(buf, "28") || strstr(buf, "30") || strstr(buf, "31")){
             property_set("ro.product.model", "ASUS_Z00A");
-            property_set("ro.build.fingerprint", "asus/WW_Z00A/Z00A:5.0/LRX21V/2.20.40.165_20160118_6541_user:user/release-keys");
-            property_set("ro.build.description", "asusmofd_fhd-user 5.0 LRX21V 2.20.40.165_20160118_6541_user release-keys");
+            property_set("ro.build.fingerprint", "asus/WW_Z00A/Z00A:6.0.1/MMB29P/4.21.40.61_20160603_3939_user:user/release-keys");
+            property_set("ro.build.description", "asusmofd_fhd-user 6.0.1 MMB29P 4.21.40.61_20160603_3939_user release-keys");
             property_set("ro.product.device", "Z00A");
             property_set("ro.build.product", "Z00A");
         } else {
