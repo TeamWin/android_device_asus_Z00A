@@ -26,6 +26,7 @@
 #include <cutils/properties.h>
 #include <sys/mman.h>
 
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -286,18 +287,19 @@ int flash_ifwi_scu_emmc(void *data, unsigned size)
 	return ret;
 }
 
-Value* FlashIfwiMofdFn(const char *name, State * state, int argc, Expr * argv[]) {
+Value* FlashIfwiMofdFn(const char *name, State * state,
+                       const std::vector<std::unique_ptr<Expr>>& argv) {
 	Value *ret = NULL;
 	unsigned char *buffer = NULL;
 	int ifwi_size;
 	FILE *f = NULL;
 
-	if (argc != 1) {
-		ErrorAbort(state, "%s() expected 1 arg, got %d", name, argc);
+	if (argv.size() != 1) {
+		ErrorAbort(state, "%s() expected 1 arg, got %zu", name, argv.size());
 		return NULL;
 	}
 	std::vector<std::string> args;
-	if (!ReadArgs(state, 1, argv, &args)) {
+	if (!ReadArgs(state, argv, &args)) {
 		ErrorAbort(state, "%s() invalid args ", name);
 		return NULL;
 	}
