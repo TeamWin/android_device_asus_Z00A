@@ -1,0 +1,8 @@
+[
+  {
+    "remote":"github",
+    "repository": "LineageOS/android_kernel_asus_moorefield",
+    "target_path": "kernel/asus/moorefield",
+    "revision":"cm-14.1"
+  }
+]

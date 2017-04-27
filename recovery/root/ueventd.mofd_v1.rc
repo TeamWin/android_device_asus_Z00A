@@ -25,6 +25,9 @@
 /dev/media*                             0660   root       camera
 /dev/ipu-psys*                          0660   root       camera
 
+# Intel SCU watchdog
+/dev/watchdog                           0600   system     system
+
 # Device needed by shared transport layer (used by bluetooth, FM and GPS)
 /dev/rfkill                             0660   bluetooth  bluetooth
 /dev/hci_tty                            0660   bluetooth  bluetooth
@@ -45,6 +48,7 @@
 /dev/card0                              0666   system     system
 /dev/pvr_sync                           0666   system     system
 /dev/sw_sync                            0660   system     system
+/dev/ion                                0666   system     system
 
 # NFCC devices
 /dev/pn544                              0660   nfc        nfc
@@ -55,6 +59,7 @@
 /sys/devices/pci* L2_autosuspend_enable 0664   root       system
 
 # the 2nd modem UART interfaces should only be readable for other
+/sys/devices/pci0000:00/0000:00:04.3 power/control 0664   root       system
 /sys/devices/pci0000:00/0000:00:04.2 power/control 0664   root       system
 
 # cpufreq sysfs interfaces permission
