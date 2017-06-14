@@ -48,7 +48,6 @@ TARGET_BOOTLOADER_IS_2ND := true
 BOARD_EGL_CFG := device/asus/mofd-common/configs/egl.cfg
 
 # Init
-TARGET_UNIFIED_DEVICE := true
 TARGET_INIT_VENDOR_LIB := libinit_mofd
 TARGET_LIBINIT_DEFINES_FILE := device/asus/Z00A/init/init_mofd.cpp
 
