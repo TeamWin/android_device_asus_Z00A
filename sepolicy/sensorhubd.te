@@ -3,11 +3,17 @@ type sensorhubd, domain;
 type sensorhubd_exec, exec_type, file_type;
 init_daemon_domain(sensorhubd)
 
+allow sensorhubd config_file:dir search;
+allow sensorhubd config_file:file r_file_perms;
 allow sensorhubd efs_file:dir search;
 allow sensorhubd efs_file:file r_file_perms;
 allow sensorhubd factory_file:dir search;
-allow sensorhubd factory_file:file r_file_perms;
+allow sensorhubd factory_file:file rw_file_perms;
+allow sensorhubd sensor_sysfs_file:dir {read open search};
 allow sensorhubd sensor_sysfs_file:file rw_file_perms;
+allow sensorhubd sensor_sysfs_file:lnk_file r_file_perms;
+allow sensorhubd sysfs_coretemp:file rw_file_perms;
+allow sensorhubd self:capability dac_override;
 
 # Note: sensorhubd tries to exec a script to update the firmware, we
 #    specifically do not allow that since we don't ship the script

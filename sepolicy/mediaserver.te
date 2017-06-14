@@ -1,4 +1,7 @@
 allow mediaserver asus_tee_device:chr_file rw_file_perms;
+allow mediaserver config_file:dir search;
+allow mediaserver config_file:file r_file_perms;
+allow mediaserver camera_device:chr_file rw_file_perms;
 allow mediaserver graphics_device:dir search;
 allow mediaserver factory_file:dir search;
 allow mediaserver factory_file:file r_file_perms;

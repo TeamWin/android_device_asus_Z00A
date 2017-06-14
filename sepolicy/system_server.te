@@ -1,5 +1,5 @@
 #============= system_server ==============
-allow system_server asus_config_file:dir search;
+allow system_server config_file:dir search;
 allow system_server asus_tee_device:chr_file r_file_perms;
 allow system_server efs_file:dir r_dir_perms;
 allow system_server efs_file:file r_file_perms;
@@ -8,6 +8,7 @@ allow system_server factory_file:file r_file_perms;
 allow system_server gps_data_file:fifo_file rw_file_perms;
 allow system_server gps_data_file:dir search;
 allow system_server radio_device:chr_file w_file_perms;
+allow system_server radio_device:dir r_dir_perms;
 allow system_server wifi_config_file:dir r_dir_perms;
 allow system_server wifi_config_file:file r_file_perms;
 
@@ -16,3 +17,4 @@ allow system_server wifi_config_file:file r_file_perms;
 allow system_server system_file:file execmod;
 
 unix_socket_connect(system_server, sensorhubd, sensorhubd)
+allow system_server sysfs_touchscreen:file rw_file_perms;

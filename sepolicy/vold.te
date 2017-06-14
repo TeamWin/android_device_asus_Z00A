@@ -1,3 +1,5 @@
-allow vold asus_config_file:dir { r_dir_perms setattr };
+allow vold config_file:dir { r_dir_perms setattr };
+allow vold asus_tee_device:chr_file { read open ioctl setattr };
 allow vold factory_file:dir { rw_dir_perms setattr };
-allow vold factory_file:file { rw_file_perms setattr };
+allow vold factory_file:file { create_file_perms rw_file_perms setattr };
+allow vold kernel:system module_request;

@@ -3,7 +3,9 @@ config.CID                              u:object_r:asus_prop:s0
 config.idcode                           u:object_r:asus_prop:s0
 config.packingcode                      u:object_r:asus_prop:s0
 config.versatility                      u:object_r:asus_prop:s0
+cpufreq                                 u:object_r:asus_prop:s0
 factorymode                             u:object_r:asus_prop:s0
+init.shutdown_to_charging               u:object_r:charger_prop:s0
 isn                                     u:object_r:asus_prop:s0
 media.camera.                           u:object_r:camera_prop:s0
 persist.gps.IgnoreAidingMask            u:object_r:gps_prop:s0
@@ -11,6 +13,8 @@ persist.hdmi.				u:object_r:hdmi_prop:s0
 persist.ims_support                     u:object_r:asus_prop:s0
 persist.sys.mmgr1.                      u:object_r:radio_prop:s0
 persist.sys.mmgr2.                      u:object_r:radio_prop:s0
+ro.asus.phone.                          u:object_r:asus_prop:s0
+ro.swconf.info                          u:object_r:asus_prop:s0
 serialno                                u:object_r:asus_prop:s0
 service.amtl1.cfg                       u:object_r:radio_prop:s0
 service.amtl2.cfg                       u:object_r:radio_prop:s0
@@ -28,3 +32,4 @@ sys.ucode.version                       u:object_r:asus_prop:s0
 sys.usb.modemevt                        u:object_r:radio_prop:s0
 sys.valhooks.version                    u:object_r:asus_prop:s0
 sys.watchdog.previous.counter           u:object_r:asus_prop:s0
+

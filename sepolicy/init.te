@@ -9,6 +9,7 @@ allow init binfmt_miscfs:file w_file_perms;
 # /local_cfg
 allow init tmpfs:lnk_file create_file_perms;
 allow init rootfs:lnk_file setattr;
+allow init rootfs:dir relabelto;
 
 # /cache/telephony/[12]
 allow init radio_cache_file:file rw_file_perms;
@@ -19,3 +20,6 @@ allow init sepfs:file w_file_perms;
 
 # Allow shimlibs
 allow init { domain -lmkd }:process noatsecure;
+
+allow init kernel:system module_request;
+allow init debugfs:file rw_file_perms;

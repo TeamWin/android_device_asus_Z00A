@@ -1,1 +1,4 @@
 allow untrusted_app asus_tee_device:chr_file rw_file_perms;
+allow untrusted_app system_file:file execmod;
+allow untrusted_app cpuinfo_file:file { mounton };
+allow untrusted_app cpuinfo_file:file r_file_perms;

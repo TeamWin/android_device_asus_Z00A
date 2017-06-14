@@ -2,7 +2,7 @@
 type log_file_we_dont_want_to_allow, file_type, data_file_type;
 
 # Asusconfig
-type asus_config_file, file_type;
+type config_file, file_type, sysfs_type;
 
 # Bluetooth
 type bluetooth_config_file, file_type, data_file_type;
@@ -13,6 +13,9 @@ type sysfs_touchscreen, fs_type, sysfs_type;
 
 # Factory
 type factory_file, file_type, data_file_type;
+
+# Houdini
+type cpuinfo_file, file_type;
 
 # Media
 type media_efs_file, file_type;
@@ -26,7 +29,6 @@ type radio_sysfs_file, fs_type, sysfs_type;
 type sensorhubd_debug_file, file_type;
 type sensorhubd_efs_file, file_type;
 type sensorhubd_socket, file_type;
-type i2c_device, dev_type;
 type sensor_sysfs_file, fs_type, sysfs_type;
 
 # Silentlake service
