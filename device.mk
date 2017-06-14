@@ -24,11 +24,6 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.build.asus.sku=WW
 
-# Charger
-PRODUCT_PACKAGES += \
-    charger \
-    charger_res_images
-
 ADDITIONAL_DEFAULT_PROPERTIES += ro.sys.powerctl.no.shutdown=1
 
 # Ramdisk

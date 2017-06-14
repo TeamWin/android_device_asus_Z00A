@@ -39,11 +39,6 @@ TARGET_OTA_ASSERT_DEVICE := Z00A
 # bootstub as 2nd bootloader
 TARGET_BOOTLOADER_IS_2ND := true
 
-# Charger
-#BOARD_CHARGER_ENABLE_SUSPEND := true
-#BOARD_CHARGER_SHOW_PERCENTAGE := true
-#BOARD_HEALTHD_CUSTOM_CHARGER_RES := device/asus/Z00A/charger/images
-
 # EGL
 BOARD_EGL_CFG := device/asus/mofd-common/configs/egl.cfg
 
